@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StoreVision Analytics Platform</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="platform">
+        <!-- Header -->
+        <header class="platform-header">
+            <div class="header-content">
+                <div class="logo">
+                    <h1>StoreVision Analytics</h1>
+                    <span class="version">v1.0.0</span>
+                </div>
+                <nav class="header-nav">
+                    <button class="nav-btn active" data-view="upload">Upload</button>
+                    <button class="nav-btn" data-view="analytics">Analytics</button>
+                    <button class="nav-btn" data-view="events">Events</button>
+                    <button class="nav-btn" data-view="system">System</button>
+                </nav>
+                <div class="system-status">
+                    <span class="status-indicator" id="systemStatus">Operational</span>
+                </div>
+            </div>
+        </header>
+
+        
+        <main class="platform-main">
+            
+            <section class="view active" id="uploadView">
+                <div class="section-header">
+                    <h2>Video Upload & Analysis</h2>
+                    <p>Upload CCTV footage for real-time intelligence extraction</p>
+                </div>
+
+                <div class="upload-container">
+                    <div class="upload-form">
+                        <div class="form-group">
+                            <label for="storeId">Store ID</label>
+                            <input type="text" id="storeId" placeholder="STORE_001" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="cameraId">Camera ID</label>
+                            <input type="text" id="cameraId" placeholder="CAM_1" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="videoFile">Video File (MP4)</label>
+                            <div class="file-input-wrapper">
+                                <input type="file" id="videoFile" accept=".mp4" required>
+                                <div class="file-input-display" id="fileDisplay">
+                                    <span class="file-icon">[ ]</span>
+                                    <span class="file-text">Select MP4 file</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button class="btn-primary" id="uploadBtn" disabled>Upload & Analyze</button>
+                    </div>
+
+                    <div class="processing-status" id="processingStatus" style="display: none;">
+                        <h3>Processing Video</h3>
+                        <div class="progress-container">
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="progressFill"></div>
+                            </div>
+                            <span class="progress-text" id="progressText">0%</span>
+                        </div>
+                        <div class="status-details">
+                            <div class="status-item">
+                                <span class="label">Frame:</span>
+                                <span class="value" id="currentFrame">0</span>
+                                <span class="separator">/</span>
+                                <span class="value" id="totalFrames">0</span>
+                            </div>
+                            <div class="status-item">
+                                <span class="label">Detections:</span>
+                                <span class="value" id="detectionCount">0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+               
+                <div class="results-container" id="resultsContainer" style="display: none;">
+                    <div class="section-header">
+                        <h3>Analysis Results</h3>
+                        <button class="btn-secondary" id="newAnalysisBtn">New Analysis</button>
+                    </div>
+
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-label">Total Detections</div>
+                            <div class="metric-value" id="totalDetections">0</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">Employees</div>
+                            <div class="metric-value" id="employeeCount">0</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">Customers</div>
+                            <div class="metric-value" id="customerCount">0</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">Avg Confidence</div>
+                            <div class="metric-value" id="avgConfidence">0%</div>
+                        </div>
+                    </div>
+
+                    <div class="detections-list">
+                        <h4>Detection Details</h4>
+                        <div class="table-wrapper">
+                            <table class="data-table" id="detectionsTable">
+                                <thead>
+                                    <tr>
+                                        <th>Person ID</th>
+                                        <th>Type</th>
+                                        <th>Confidence</th>
+                                        <th>Dwell Time</th>
+                                        <th>Frames</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="detectionsTableBody">
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            
+            <section class="view" id="analyticsView">
+                <div class="section-header">
+                    <h2>Analytics Dashboard</h2>
+                    <p>Real-time intelligence and metrics</p>
+                </div>
+                <div class="analytics-content">
+                    <p class="placeholder-text">Analytics dashboard - Coming soon</p>
+                </div>
+            </section>
+
+            
+            <section class="view" id="eventsView">
+                <div class="section-header">
+                    <h2>Event Stream</h2>
+                    <p>Real-time event monitoring</p>
+                </div>
+                <div class="events-content">
+                    <p class="placeholder-text">Event stream - Coming soon</p>
+                </div>
+            </section>
+
+            
+            <section class="view" id="systemView">
+                <div class="section-header">
+                    <h2>System Health</h2>
+                    <p>Platform status and diagnostics</p>
+                </div>
+                <div class="system-content">
+                    <p class="placeholder-text">System health - Coming soon</p>
+                </div>
+            </section>
+        </main>
+
+        
+        <footer class="platform-footer">
+            <div class="footer-content">
+                <span>StoreVision Analytics Platform</span>
+                <span class="separator">|</span>
+                <span>Production-Ready CCTV Intelligence</span>
+                <span class="separator">|</span>
+                <span id="apiStatus">API: Connected</span>
+            </div>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
